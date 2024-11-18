@@ -6,6 +6,7 @@ let decimalCount = 0;
 
 document.getElementById("button-clear").addEventListener("click", () => {
     logButtonPressed("CLEAR");
+    clear();
 });
 
 document.getElementById("button-sign").addEventListener("click", () => {
@@ -118,8 +119,6 @@ function setOperator(operatorInput) {
 
         const text = document.getElementById("textInputArea").textContent;
         operation.locationOfOperationInTextContent = text.indexOf(operatorInput);
-
-        console.log("current location of operator is " + index);
     } else {
         setFirstNumber();
     }
@@ -134,7 +133,7 @@ function setFirstNumber() {
 }
 
 function getAnswer() {
-    const fullText = document.getElementById("textInputArea").textContent
+    const fullText = document.getElementById("textInputArea").textContent;
     const textAfterOperator = fullText.substring((operation.locationOfOperationInTextContent + 2));
 
     number2.data = Number(textAfterOperator);
@@ -159,4 +158,13 @@ function getAnswer() {
     }
 
     document.getElementById("textInputArea").textContent = document.getElementById("textInputArea").textContent + " = " + answer;
+}
+
+function clear() {
+    document.getElementById("textInputArea").textContent = "";
+
+    number1.data, number2.data = null;
+    number1.decimalCount, number2.decimalCount = 0;
+
+    operation.data, operation.locationOfOperationInTextContent = null;
 }
