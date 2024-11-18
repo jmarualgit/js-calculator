@@ -85,7 +85,7 @@ document.getElementById("button-zero").addEventListener("click", () => {
 
 document.getElementById("button-modulus").addEventListener("click", () => {
     logButtonPressed("MODULUS");
-    setOperator("MOD");
+    setOperator("%");
 });
 
 document.getElementById("button-decimal").addEventListener("click", () => {
@@ -155,6 +155,10 @@ function getAnswer() {
             } else {
                 answer = number1.data / number2.data;
             }
+            break;
+        
+        case "%":
+            answer = number1.data % number2.data;
             break;
     }
 
