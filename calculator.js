@@ -10,6 +10,7 @@ document.getElementById("button-clear").addEventListener("click", () => {
 
 document.getElementById("button-sign").addEventListener("click", () => {
     logButtonPressed("SIGN");
+    changeSign();
 });
 
 document.getElementById("button-percent").addEventListener("click", () => {
@@ -180,5 +181,35 @@ function addDecimal() {
         number2.decimalCount++;
         document.getElementById("textInputArea").textContent = document.getElementById("textInputArea").textContent + ".";
     }
+}
 
+function changeSign() {
+
+    if (operation.data != null) {
+        const text = document.getElementById("textInputArea").textContent;
+        const textBeforeOperator = text.substring(0, operation.locationOfOperationInTextContent + 1);
+        let textAfterOperator = text.substring(operation.locationOfOperationInTextContent + 2);
+
+        if (textAfterOperator.includes("-") == false) {
+            // add a "-" to the beginning
+            textAfterOperator = "-" + textAfterOperator;
+        } else {
+            // take out the "-"
+            textAfterOperator = textAfterOperator.substring(1);
+        }
+        
+        document.getElementById("textInputArea").textContent = textBeforeOperator + " " + textAfterOperator;
+    } else {
+        let text = document.getElementById("textInputArea").textContent;
+
+        if (text.includes("-") == false) {
+            // add a "-" to the beginning
+            text = "-" + text;
+        } else {
+            // take out the "-"
+            text = text.substring(1);
+        }
+
+        document.getElementById("textInputArea").textContent = text;
+    }
 }
