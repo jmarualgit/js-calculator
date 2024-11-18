@@ -154,7 +154,11 @@ function getAnswer() {
             break;
 
         case "/":
-            answer = number1.data / number2.data;
+            if (number2.data == 0) {
+                alert("can't divide by 0!")
+            } else {
+                answer = number1.data / number2.data;
+            }
             break;
     }
 
