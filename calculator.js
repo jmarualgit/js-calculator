@@ -2,7 +2,6 @@ let number1 = {data: null, decimalCount: 0};
 let number2 = {data: null, decimalCount: 0};
 let operation = {data: null, locationOfOperationInTextContent: null};
 let answer = null;
-let decimalCount = 0;
 
 document.getElementById("button-clear").addEventListener("click", () => {
     logButtonPressed("CLEAR");
@@ -94,6 +93,7 @@ document.getElementById("button-modulus").addEventListener("click", () => {
 
 document.getElementById("button-decimal").addEventListener("click", () => {
     logButtonPressed("DECIMAL");
+    addDecimal();
 });
 
 document.getElementById("button-equal").addEventListener("click", () => {
@@ -163,8 +163,22 @@ function getAnswer() {
 function clear() {
     document.getElementById("textInputArea").textContent = "";
 
-    number1.data, number2.data = null;
-    number1.decimalCount, number2.decimalCount = 0;
+    number1.data = null;
+    number2.data = null;
+    number1.decimalCount = 0;
+    number2.decimalCount = 0;
 
-    operation.data, operation.locationOfOperationInTextContent = null;
+    operation.data = null
+    operation.locationOfOperationInTextContent = null;
+}
+
+function addDecimal() {
+    if (number1.decimalCount == 0) {
+        number1.decimalCount++;
+        document.getElementById("textInputArea").textContent = document.getElementById("textInputArea").textContent + ".";
+    } else if (number2.decimalCount == 0) {
+        number2.decimalCount++;
+        document.getElementById("textInputArea").textContent = document.getElementById("textInputArea").textContent + ".";
+    }
+
 }
