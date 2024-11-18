@@ -13,10 +13,6 @@ document.getElementById("button-sign").addEventListener("click", () => {
     changeSign();
 });
 
-document.getElementById("button-percent").addEventListener("click", () => {
-    logButtonPressed("PERCENT");
-});
-
 document.getElementById("button-divide").addEventListener("click", () => {
     logButtonPressed("DIVIDE");
     setOperator("/");
